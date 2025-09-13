@@ -1,5 +1,31 @@
 <script lang="ts">
 	import ArrowRight from '@lucide/svelte/icons/arrow-right';
+
+	const posts = [
+		{
+			title: 'Building Scalable Microservices with Node.js',
+			category: 'Tutorial',
+			readTime: '8 min',
+			snippet:
+				'A comprehensive guide to architecting microservices that can handle enterprise-level traffic...',
+			link: '/blog/building-scalable-microservices-with-nodejs'
+		},
+		{
+			title: 'Introducing QAura CLI v2.0',
+			category: 'Project',
+			readTime: '5 min',
+			snippet:
+				'Excited to announce the latest version of our testing automation tool with new features...',
+			link: '/blog/introducing-qaura-cli-v2'
+		},
+		{
+			title: 'The Future of Software Testing',
+			category: 'Thoughts',
+			readTime: '6 min',
+			snippet: 'Reflecting on how AI and automation are transforming the testing landscape...',
+			link: '/blog/the-future-of-software-testing'
+		}
+	];
 </script>
 
 <section class="bg-slate-800/50 py-20 backdrop-blur-sm">
@@ -15,38 +41,32 @@
 			</p>
 		</div>
 		<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-			{#each Array.from({ length: 3 }) as _, i}
+			{#each posts as { title, category, readTime, snippet, link }}
 				<article
 					class="group overflow-hidden rounded-xl border border-blue-500/20 bg-slate-800/80 backdrop-blur-sm transition-all duration-300 hover:border-blue-400/40 hover:shadow-lg hover:shadow-blue-500/10"
 				>
 					<div class="p-6">
 						<div class="mb-3 flex items-center justify-between">
 							<span class="rounded-full bg-blue-500/20 px-3 py-1 text-xs text-blue-300">
-								{i === 0 ? 'Tutorial' : i === 1 ? 'Project' : 'Thoughts'}
+								{category}
 							</span>
 							<span class="text-xs text-slate-500">
-								{i === 0 ? '8' : i === 1 ? '5' : '6'} min read
+								{readTime} read
 							</span>
 						</div>
 						<h3
 							class="mb-2 text-lg font-semibold text-white transition-colors group-hover:text-blue-300"
 						>
-							{[
-								'Building Scalable Microservices with Node.js',
-								'Introducing QAura CLI v2.0',
-								'The Future of Software Testing'
-							][i]}
+							{title}
 						</h3>
 						<p class="mb-4 text-sm text-slate-400">
-							{[
-								'A comprehensive guide to architecting microservices that can handle enterprise-level traffic...',
-								'Excited to announce the latest version of our testing automation tool with new features...',
-								'Reflecting on how AI and automation are transforming the testing landscape...'
-							][i]}
+							{snippet}
 						</p>
-						<span class="text-sm font-medium text-blue-400 group-hover:text-blue-300">
-							Read more →
-						</span>
+						<a href={link} class="text-sm font-medium text-blue-400 group-hover:text-blue-300">
+							Read more <ArrowRight
+								class="ml-1 inline h-4 w-4 transition-transform group-hover:translate-x-1"
+							/>
+						</a>
 					</div>
 				</article>
 			{/each}
