@@ -5,68 +5,6 @@
 
 	import ArrowRight from '@lucide/svelte/icons/arrow-right';
 	const categories = ['All', 'Testing', 'Architecture', 'IoT', 'Development', 'Quality', 'DevOps'];
-	const staticPosts = [
-		{
-			id: 1,
-			title: 'Building Modern Test Automation Frameworks',
-			excerpt:
-				'A comprehensive guide to creating robust, scalable test automation frameworks using modern tools and best practices.',
-			date: '2024-01-15',
-			category: 'Testing',
-			readTime: '8 min read',
-			tags: ['Playwright', 'Testing', 'Automation', 'QA']
-		},
-		{
-			id: 2,
-			title: 'Microservices Architecture: Lessons Learned',
-			excerpt:
-				'Real-world insights from implementing microservices architecture in production environments.',
-			date: '2024-01-10',
-			category: 'Architecture',
-			readTime: '12 min read',
-			tags: ['Microservices', 'Architecture', 'DevOps', 'Scalability']
-		},
-		{
-			id: 3,
-			title: 'Smart Home Automation with IoT',
-			excerpt:
-				'How I built my smart home system using various IoT devices and custom automation scripts.',
-			date: '2024-01-05',
-			category: 'IoT',
-			readTime: '10 min read',
-			tags: ['IoT', 'Smart Home', 'Automation', 'Hardware']
-		},
-		{
-			id: 4,
-			title: 'TypeScript Best Practices for Large Applications',
-			excerpt:
-				'Essential TypeScript patterns and practices for maintaining large-scale applications.',
-			date: '2023-12-28',
-			category: 'Development',
-			readTime: '15 min read',
-			tags: ['TypeScript', 'JavaScript', 'Best Practices', 'Development']
-		},
-		{
-			id: 5,
-			title: 'Quality Engineering in Agile Teams',
-			excerpt:
-				'Strategies for integrating quality engineering practices into agile development workflows.',
-			date: '2023-12-20',
-			category: 'Quality',
-			readTime: '7 min read',
-			tags: ['Quality Engineering', 'Agile', 'Testing', 'Process']
-		},
-		{
-			id: 6,
-			title: 'Container Orchestration with Kubernetes',
-			excerpt:
-				'A practical guide to deploying and managing containerized applications with Kubernetes.',
-			date: '2023-12-15',
-			category: 'DevOps',
-			readTime: '14 min read',
-			tags: ['Kubernetes', 'Docker', 'DevOps', 'Containers']
-		}
-	];
 </script>
 
 <svelte:head>
@@ -109,62 +47,7 @@
 	<section class="py-20">
 		<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 			<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" id="posts-grid">
-				{#each data.posts as post}
-					<article
-						class="group overflow-hidden rounded-xl border border-blue-500/20 bg-slate-800/80 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:transform hover:border-blue-400/40"
-						data-category={'Testing'}
-					>
-						<div class="p-6">
-							<div class="mb-4 flex items-center justify-between">
-								<span
-									class={`rounded-full px-3 py-1 text-sm font-medium ${
-										{
-											Testing: 'bg-blue-500/20 text-blue-300',
-											Architecture: 'bg-teal-500/20 text-teal-300',
-											IoT: 'bg-cyan-500/20 text-cyan-300',
-											Development: 'bg-blue-500/20 text-blue-300',
-											Quality: 'bg-green-500/20 text-green-300',
-											DevOps: 'bg-orange-500/20 text-orange-300'
-										}['Testing'] || 'bg-slate-500/20 text-slate-300'
-									}`}
-								>
-									{'Testing'}
-								</span>
-								<span class="text-sm text-slate-400">{'01-01-2001'}</span>
-							</div>
-							<h2
-								class="mb-3 text-xl font-bold text-white transition-colors duration-300 group-hover:text-blue-300"
-							>
-								{post.title}
-							</h2>
-							<p class="mb-4 leading-relaxed text-slate-400">
-								{'post.excerpt'}
-							</p>
-							<div class="mb-4 flex flex-wrap gap-2">
-								<!-- {post.tags.map((tag) => (
-                      <span class="bg-slate-700/50 text-slate-300 px-2 py-1 rounded text-xs">
-                        #{tag}
-                      </span>
-                    ))} -->
-							</div>
-							<div class="flex items-center justify-between">
-								<span class="text-sm text-slate-400">
-									{'post.readTime'}
-								</span>
-								<a
-									href={`/blog/${post.slug}`}
-									class="flex items-center gap-2 font-medium text-blue-400 transition-colors duration-300 hover:text-blue-300"
-								>
-									Read More
-									<ArrowRight
-										class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-									/>
-								</a>
-							</div>
-						</div>
-					</article>
-				{/each}
-				{#each staticPosts as post}
+				{#each data.posts as post (post.id)}
 					<article
 						class="group overflow-hidden rounded-xl border border-blue-500/20 bg-slate-800/80 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:transform hover:border-blue-400/40"
 						data-category={post.category}

@@ -9,33 +9,9 @@
 	import X from '@lucide/svelte/icons/x';
 	import Zap from '@lucide/svelte/icons/zap';
 
-	import StoryBlockText from '$lib/components/story-block/text.svelte';
-
 	import type { PageProps } from './$types';
-	import { getAssetUrl } from '$lib/helper';
-	import { getAllHeadings, resolvePlainTextForNodes } from '$lib/components/content';
 
 	let { data }: PageProps = $props();
-
-	let tableOfContents = $derived(
-		data.post
-			.content!.filter((block) => !!block && '__typename' in block)
-			.map((block) => {
-				if (block.__typename === 'ComponentStoryBlockText') {
-					const headings = getAllHeadings(block.content);
-					return headings.map((h) => resolvePlainTextForNodes(h.children));
-				}
-				return [];
-			})
-			.flat()
-			.map((heading, index) => ({
-				heading,
-				index,
-				anchor: heading.replace(/\s+/g, '-').toLowerCase()
-			}))
-	);
-
-	$inspect(tableOfContents);
 </script>
 
 <svelte:head>
@@ -70,27 +46,27 @@
 				</span>
 			</h1>
 
-			{#if data.post.description}
+			<!-- {#if data.post.description}
 				<p class="mx-auto max-w-3xl text-xl leading-relaxed text-slate-300">
 					{data.post.description}
 				</p>
-			{/if}
+			{/if} -->
 		</header>
 
 		<figure class="mb-12">
 			<div class="overflow-hidden rounded-2xl">
-				<img
+				<!-- <img
 					src={getAssetUrl(data.post.cover.url)}
 					alt={data.post.cover.alternativeText}
 					loading="eager"
 					class="h-64 w-full object-cover md:h-96"
-				/>
+				/> -->
 			</div>
-			{#if data.post.cover.caption}
+			<!-- {#if data.post.cover.caption}
 				<figcaption class="mt-3 text-center text-sm text-slate-400 italic">
 					{data.post.cover.caption}
 				</figcaption>
-			{/if}
+			{/if} -->
 		</figure>
 	</div>
 </section>
@@ -112,13 +88,13 @@
 				<TableOfContents class="h-6 w-6 text-blue-400" />Table of Contents
 			</h2>
 			<ul class="space-y-2 text-slate-300">
-				{#each tableOfContents as item}
+				<!-- {#each tableOfContents as item}
 					<li>
 						<a href="#{item.anchor}" class="text-blue-400 transition-colors hover:text-blue-300">
 							{item.index + 1}. {item.heading}
 						</a>
 					</li>
-				{/each}
+				{/each} -->
 				<li>
 					<a href="#foundations" class="text-blue-400 transition-colors hover:text-blue-300"
 						>1. Framework Foundations</a
@@ -148,13 +124,13 @@
 		</div>
 
 		<section id="story-blocks" class="mb-16">
-			{#each data.post.content || [] as storyBlock}
+			<!-- {#each data.post.content || [] as storyBlock}
 				{#if storyBlock && '__typename' in storyBlock}
 					{#if storyBlock.__typename === 'ComponentStoryBlockText'}
 						<StoryBlockText {...storyBlock} />
 					{/if}
 				{/if}
-			{/each}
+			{/each} -->
 		</section>
 
 		<section id="foundations" class="mb-16">
