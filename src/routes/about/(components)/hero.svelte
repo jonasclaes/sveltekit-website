@@ -40,7 +40,8 @@
 				<img
 					src="https://jonasclaes.be/content/images/2024/09/Avatar2024-1.jpeg"
 					alt="Jonas Claes"
-					class="mx-auto flex h-64 w-64 items-center justify-center rounded-full border border-blue-400/30 bg-gradient-to-br from-blue-500/20 to-teal-500/20 backdrop-blur-sm"
+					class="mx-auto flex h-3/4 w-3/4 items-center justify-center rounded-full border border-blue-400/30 bg-gradient-to-br from-blue-500/20 to-teal-500/20 backdrop-blur-sm"
+					fetchpriority="high"
 				/>
 			</div>
 		</div>
