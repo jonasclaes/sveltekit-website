@@ -38,5 +38,5 @@
 </svelte:head>
 
 <div class="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
-	<BlogPostEditor {onSave} onCancel={handleCancel} />
+	<BlogPostEditor onSave={handleSave} onCancel={handleCancel} />
 </div>
