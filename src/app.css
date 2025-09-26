@@ -1,3 +1,80 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+.ghost-content {
+	@apply px-8;
+}
+
+.ghost-content > p {
+	@apply mt-7;
+}
+
+.ghost-content > p > code {
+	@apply bg-gray-700 px-1.5 py-0.5;
+}
+
+.ghost-content > p > a {
+	@apply text-blue-500 underline;
+}
+
+.ghost-content > ul {
+	@apply mt-7 pl-7;
+}
+
+.ghost-content > ul > li {
+	@apply list-disc;
+}
+
+.ghost-content > ul > li > a {
+	@apply text-blue-500 underline;
+}
+
+.ghost-content > h2 {
+	@apply mt-14 text-3xl;
+}
+
+.ghost-content > .kg-bookmark-card {
+	@apply mt-12 block;
+}
+
+.ghost-content > .kg-bookmark-card > .kg-bookmark-container {
+	@apply flex rounded-md border;
+}
+
+.ghost-content > .kg-bookmark-card > .kg-bookmark-container > .kg-bookmark-content {
+	@apply flex flex-col p-5;
+}
+
+.ghost-content
+	> .kg-bookmark-card
+	> .kg-bookmark-container
+	> .kg-bookmark-content
+	> .kg-bookmark-title {
+	@apply text-lg font-semibold;
+}
+
+.ghost-content
+	> .kg-bookmark-card
+	> .kg-bookmark-container
+	> .kg-bookmark-content
+	> .kg-bookmark-description {
+	@apply mt-1 text-sm;
+}
+
+.ghost-content
+	> .kg-bookmark-card
+	> .kg-bookmark-container
+	> .kg-bookmark-content
+	> .kg-bookmark-metadata {
+	@apply mt-6 flex items-center gap-2 text-xs;
+}
+
+.ghost-content
+	> .kg-bookmark-card
+	> .kg-bookmark-container
+	> .kg-bookmark-content
+	> .kg-bookmark-metadata
+	> .kg-bookmark-icon {
+	@apply h-5 w-5;
+}

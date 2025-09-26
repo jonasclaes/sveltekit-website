@@ -1,6 +1,14 @@
+import { GHOST_BASE_URL, GHOST_CONTENT_API_KEY } from '$env/static/private';
+import type { GhostPost } from '$lib';
 import type { PageServerLoad } from './$types';
 
-export const load = (async () => {
+export const load = (async ({ fetch }) => {
+	const response = await fetch(
+		`${GHOST_BASE_URL}/ghost/api/content/posts?key=${GHOST_CONTENT_API_KEY}&include=authors,tags&limit=100`
+	);
+
+	const { posts: ghostPosts }: { posts: GhostPost[] } = await response.json();
+
 	const posts = [
 		{
 			id: 1,
@@ -65,6 +73,7 @@ export const load = (async () => {
 	] as const;
 
 	return {
-		posts
+		posts,
+		ghostPosts
 	};
 }) satisfies PageServerLoad;

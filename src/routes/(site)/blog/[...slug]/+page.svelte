@@ -18,6 +18,12 @@
 	<title>{data.post.title} | Jonas Claes</title>
 </svelte:head>
 
+{#if data.ghostPost}
+	<div class="ghost-content">
+		{@html data.ghostPost.html}
+	</div>
+{/if}
+
 <section class="overflow-hidden bg-slate-800/30 py-12 backdrop-blur-sm">
 	<div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
 		<a

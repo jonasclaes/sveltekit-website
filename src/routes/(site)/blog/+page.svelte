@@ -47,6 +47,63 @@
 	<section class="py-20">
 		<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 			<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" id="posts-grid">
+				{#each data.ghostPosts as post (post.id)}
+					<article
+						class="group overflow-hidden rounded-xl border border-blue-500/20 bg-slate-800/80 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:transform hover:border-blue-400/40"
+						data-category={post.primary_tag!.name}
+					>
+						<div class="p-6">
+							<div class="mb-4 flex items-center justify-between">
+								<span
+									class={`rounded-full px-3 py-1 text-sm font-medium ${
+										{
+											Testing: 'bg-blue-500/20 text-blue-300',
+											Architecture: 'bg-teal-500/20 text-teal-300',
+											IoT: 'bg-cyan-500/20 text-cyan-300',
+											Development: 'bg-blue-500/20 text-blue-300',
+											Quality: 'bg-green-500/20 text-green-300',
+											DevOps: 'bg-orange-500/20 text-orange-300'
+										}[post.primary_tag!.name] || 'bg-slate-500/20 text-slate-300'
+									}`}
+								>
+									{post.primary_tag!.name}
+								</span>
+								<span class="text-sm text-slate-400"
+									>{new Date(post.published_at).toLocaleDateString('nl-BE', {
+										dateStyle: 'medium'
+									})}</span
+								>
+							</div>
+							<h2
+								class="mb-3 text-xl font-bold text-white transition-colors duration-300 group-hover:text-blue-300"
+							>
+								{post.title}
+							</h2>
+							<p class="mb-4 leading-relaxed text-slate-400">
+								{post.excerpt}
+							</p>
+							<div class="mb-4 flex flex-wrap gap-2">
+								{#each post.tags.slice(0, 3) as tag (tag.id)}
+									<span class="rounded bg-slate-700/50 px-2 py-1 text-xs text-slate-300">
+										#{tag.name}
+									</span>
+								{/each}
+							</div>
+							<div class="flex items-center justify-between">
+								<span class="text-sm text-slate-400">{post.reading_time} min read</span>
+								<a
+									href="/blog/{post.slug}"
+									class="flex items-center gap-2 font-medium text-blue-400 transition-colors duration-300 hover:text-blue-300"
+								>
+									Read More
+									<ArrowRight
+										class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+									/>
+								</a>
+							</div>
+						</div>
+					</article>
+				{/each}
 				{#each data.posts as post (post.id)}
 					<article
 						class="group overflow-hidden rounded-xl border border-blue-500/20 bg-slate-800/80 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:transform hover:border-blue-400/40"
